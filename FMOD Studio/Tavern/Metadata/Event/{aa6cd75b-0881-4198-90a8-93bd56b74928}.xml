@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{aa6cd75b-0881-4198-90a8-93bd56b74928}">
 		<property name="name">
 			<value>Music_2</value>
