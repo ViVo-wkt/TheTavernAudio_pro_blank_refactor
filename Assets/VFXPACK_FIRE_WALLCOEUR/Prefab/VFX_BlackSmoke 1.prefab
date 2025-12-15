@@ -4780,6 +4780,9 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4878,7 +4881,6 @@ MonoBehaviour:
   chargeChild: {fileID: 3826321047719324576}
   chargedChild: {fileID: 8597431743910197308}
   groundChild: {fileID: 6743338967912299076}
-  groundTag: obstacle
   chargedChildActivationDelay: 0.5
   destroyDelay: 0.5
   colorChangeDelay: 0.5

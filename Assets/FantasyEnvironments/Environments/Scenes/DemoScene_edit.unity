@@ -1398,11 +1398,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeTime: 2
-  spellPrefab: {fileID: 4380918445339287248, guid: bc636f3c0697c124c99a64c6f3eb537b, type: 3}
+  spellPrefab: {fileID: 4380918445339287248, guid: 7e96c548fc4cfdc4faab8f3e0004245b, type: 3}
   spellSpawnPoint: {fileID: 477513549}
   spellShootForce: 50
-  chargeStartColor: {r: 0, g: 0, b: 0, a: 1}
-  chargeEndColor: {r: 0.8784314, g: 0.14509802, b: 0.7944661, a: 1}
+  chargeStartColor: {r: 1, g: 1, b: 1, a: 1}
+  chargeEndColor: {r: 1, g: 1, b: 1, a: 1}
   chargedChildName: ChargedFX
   chargeCurve:
     serializedVersion: 2
@@ -1419,8 +1419,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
