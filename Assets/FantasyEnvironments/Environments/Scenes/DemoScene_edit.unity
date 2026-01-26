@@ -2441,7 +2441,7 @@ MonoBehaviour:
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
-  OverrideAttenuation: 0
+  OverrideAttenuation: 1
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
 --- !u!1 &431090423
@@ -3675,7 +3675,14 @@ MonoBehaviour:
       Data2: 1216189155
       Data3: 1703331987
       Data4: -1803330870
-    Path: event:/Spell/Main
+    Path: event:/Spell/Charge
+  spellLaunchEvent:
+    Guid:
+      Data1: -2011357506
+      Data2: 1201097959
+      Data3: 1153563318
+      Data4: -288256771
+    Path: event:/Spell/Launch
   spellImpactEvent:
     Guid:
       Data1: 1975939354
@@ -6632,7 +6639,7 @@ MonoBehaviour:
   Params: []
   OverrideAttenuation: 1
   OverrideMinDistance: 1
-  OverrideMaxDistance: 14.9
+  OverrideMaxDistance: 20
 --- !u!1 &1602359161
 GameObject:
   m_ObjectHideFlags: 0

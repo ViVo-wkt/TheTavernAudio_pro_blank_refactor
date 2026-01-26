@@ -10,13 +10,13 @@ public class AudioSystem : MonoBehaviour
 {
     // EMITTERS //
     [SerializeField] private StudioEventEmitter TavernMusic_2; // to tylko prezentacja
-    
-    public FMODUnity.StudioEventEmitter TavernMusic; // �cie�ka do event emittera na scenie
+
+    public FMODUnity.StudioEventEmitter TavernMusic; // ścieżka do event emittera na scenie
     public StudioEventEmitter TavernAmb;
     public StudioEventEmitter TavernFireplace;
     public StudioEventEmitter OutsideAmb;
 
-    //AudioControl tavernMusic = FindObjectOfType<AudioControl>(); Odwo�ywanie si� do zewn�trznego skryptu
+    //AudioControl tavernMusic = FindObjectOfType<AudioControl>(); Odwoływanie się do zewnętrznego skryptu
     //tavernMusic.tavernMusic.IsPlaying();
 
     // EVENTS //
@@ -31,8 +31,17 @@ public class AudioSystem : MonoBehaviour
     public EventReference jumpEvent;
     FMOD.Studio.EventInstance LandSound;
     public EventReference landEvent;
+
+    // --- SEKCJA ZAKLĘĆ ---
+    // SpellSound przechowuje teraz instancję ładowania (Charge)
     public FMOD.Studio.EventInstance SpellSound;
+
+    // To traktujemy jako event Ładowania (Charge/Hold)
     public EventReference spellEvent;
+
+    // NOWE: Tutaj przypisz event Wystrzelenia (Launch - One Shot)
+    public EventReference spellLaunchEvent;
+
     public FMOD.Studio.EventInstance SpellImpact;
     public EventReference spellImpactEvent;
 
@@ -83,7 +92,7 @@ public class AudioSystem : MonoBehaviour
     void Start()
     {
         // VCA SETUP //
-        GlobalVCA = FMODUnity.RuntimeManager.GetVCA("vca:/Mute"); // podanie klasie VCA �cie�ki do wybranego eventu / snapshotu
+        GlobalVCA = FMODUnity.RuntimeManager.GetVCA("vca:/Mute"); // podanie klasie VCA ścieżki do wybranego eventu / snapshotu
         MusicVCA = FMODUnity.RuntimeManager.GetVCA("vca:/Music");
         TavernVCA = FMODUnity.RuntimeManager.GetVCA("vca:/Tavern_amb");
         OutsideVCA = FMODUnity.RuntimeManager.GetVCA("vca:/Outside_amb");
@@ -106,8 +115,8 @@ public class AudioSystem : MonoBehaviour
         door_2 = "Tavern_door_room (1)";
         door_3 = "Tavern_door_room (2)";
 
-    // CALC DISTANCE TO GROUND // 
-    distToGround = GetComponent<Collider>().bounds.extents.y;
+        // CALC DISTANCE TO GROUND // 
+        distToGround = GetComponent<Collider>().bounds.extents.y;
 
         if (TavernFireplace == null)
             Debug.LogError("NULL");
@@ -169,7 +178,7 @@ public class AudioSystem : MonoBehaviour
     {
         if (doorsName == door_1)
         {
-            if(doorsOpened_1)
+            if (doorsOpened_1)
                 DoorsManager(ref DoorsSound, 1, close);
             else
                 DoorsManager(ref DoorsSound, 1, open);
@@ -188,7 +197,7 @@ public class AudioSystem : MonoBehaviour
             else
                 DoorsManager(ref DoorsSound, 3, open);
         }
-    }    
+    }
 
     // FOOTSTEPS SOUNDS // 
     public void PlayFootsteps()
@@ -287,24 +296,45 @@ public class AudioSystem : MonoBehaviour
         }
     }
 
-    // SPELL CAST //
+    // SPELL CAST (MODYFIKACJA DLA DWÓCH EVENTÓW) //
     public void SpellCast()
     {
-        SpellSound = RuntimeManager.CreateInstance(spellEvent);
-        SpellSound.setParameterByNameWithLabel("Spell", "Looping");
-        SpellSound.start();
+        // 1. Odtwarzamy dźwięk ładowania (Charge + Loop)
+        // Zakładamy, że spellEvent zawiera teraz tylko pętlę ładowania/trzymania
+        if (!string.IsNullOrEmpty(spellEvent.Path))
+        {
+            SpellSound = RuntimeManager.CreateInstance(spellEvent);
+            // Przypisanie do gracza, żeby dźwięk podążał za nim
+            SpellSound.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+            SpellSound.start();
+        }
     }
 
     public void SpellRelease()
     {
-        SpellSound.setParameterByNameWithLabel("Spell", "Release");
-        SpellSound.release();
+        // 1. Zatrzymujemy ładowanie z FadeOutem (dzięki temu zniknie płynnie)
+        if (SpellSound.isValid())
+        {
+            SpellSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            SpellSound.release();
+        }
+
+        // 2. Odtwarzamy OSOBNY event wystrzelenia (Launch) jako One-Shot
+        if (!string.IsNullOrEmpty(spellLaunchEvent.Path))
+        {
+            // PlayOneShotAttached odtwarza dźwięk raz i sam zarządza jego instancją
+            RuntimeManager.PlayOneShotAttached(spellLaunchEvent, gameObject);
+        }
     }
 
     public void SpellCancel()
     {
-        SpellSound.setParameterByNameWithLabel("Spell", "Cancel");
-        SpellSound.release();
+        // Po prostu zatrzymujemy ładowanie (bez strzału)
+        if (SpellSound.isValid())
+        {
+            SpellSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            SpellSound.release();
+        }
     }
 
     public void SpellImpactSound(Vector3 position)
@@ -360,7 +390,7 @@ public class AudioSystem : MonoBehaviour
         {
             InsideRoom = FMODUnity.RuntimeManager.CreateInstance(insideRoomSnap);
         }
-        
+
         if (roomsAmbientActivated == true && doorsName == door_1 && doorsOpened_1 == false)
         {
             RoomsSnapInstanceStart();
