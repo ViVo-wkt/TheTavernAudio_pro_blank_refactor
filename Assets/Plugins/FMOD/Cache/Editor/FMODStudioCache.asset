@@ -70,10 +70,10 @@ MonoBehaviour:
   Path: FMOD Studio/Tavern/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639050288808604486
+  lastModified: 639050290883068104
   FileSizes:
   - Name: Desktop
-    Value: 7746112
+    Value: 7759552
   Exists: 1
 --- !u!114 &-4601601201858583843
 MonoBehaviour:
@@ -130,6 +130,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 90000
+--- !u!114 &-2602595167796004856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Spell/Cancel
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Spell/Cancel
+  Guid:
+    Data1: 1048711509
+    Data2: 1158003181
+    Data3: -1089621116
+    Data4: 171608439
+  Banks:
+  - {fileID: -5894708783804528721}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-1053486293213121987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,13 +272,14 @@ MonoBehaviour:
   - {fileID: 1749938877099841595}
   - {fileID: -627068414560072129}
   - {fileID: 8777294237947398818}
+  - {fileID: -2602595167796004856}
   EditorParameters: []
   MasterBanks:
   - {fileID: -5894708783804528721}
   StringsBanks:
   - {fileID: 6686770774505800044}
   cacheVersion: 131857
-  cacheTime: 639050288808624519
+  cacheTime: 639050290883078007
   SerializableEventsDict:
   - key: event:/Doors_single
     index: 0
@@ -285,6 +313,8 @@ MonoBehaviour:
     index: 14
   - key: event:/Spell/Launch
     index: 15
+  - key: event:/Spell/Cancel
+    index: 16
 --- !u!114 &117959695579175530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,10 +661,10 @@ MonoBehaviour:
   Path: FMOD Studio/Tavern/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639050288808624519
+  lastModified: 639050290883078007
   FileSizes:
   - Name: Desktop
-    Value: 2140
+    Value: 2188
   Exists: 1
 --- !u!114 &7338865676457057140
 MonoBehaviour:

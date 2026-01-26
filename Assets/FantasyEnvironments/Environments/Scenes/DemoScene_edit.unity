@@ -3683,6 +3683,13 @@ MonoBehaviour:
       Data3: 1153563318
       Data4: -288256771
     Path: event:/Spell/Launch
+  spellCancelEvent:
+    Guid:
+      Data1: 1048711509
+      Data2: 1158003181
+      Data3: -1089621116
+      Data4: 171608439
+    Path: event:/Spell/Cancel
   spellImpactEvent:
     Guid:
       Data1: 1975939354
