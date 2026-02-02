@@ -120,6 +120,7 @@
 		<relationship name="effects">
 			<destination>{1b3f40a1-a005-4ee2-b59b-0a994f305607}</destination>
 			<destination>{9a051c86-8830-4b3c-8024-4b366b99e9e6}</destination>
+			<destination>{f5497e04-e66e-447f-91a3-63039f0a797e}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8f1edf61-28a7-4481-8668-5ed6c3f133b9}" />
@@ -132,5 +133,43 @@
 	<object class="MixerBusPanner" id="{0d81868d-e068-4367-9559-796182c9155a}" />
 	<object class="MixerBusFader" id="{1b3f40a1-a005-4ee2-b59b-0a994f305607}" />
 	<object class="SpatialiserEffect" id="{9a051c86-8830-4b3c-8024-4b366b99e9e6}" />
+	<object class="LowpassEffect" id="{f5497e04-e66e-447f-91a3-63039f0a797e}">
+		<relationship name="automators">
+			<destination>{3a980632-22ec-405b-8ff0-ccae51a4ddb7}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{fde1f643-0426-43ea-9b52-f437085ddcaa}" />
+	<object class="Automator" id="{3a980632-22ec-405b-8ff0-ccae51a4ddb7}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>cutoff</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{f6dcb77a-2fe2-4de7-9db7-c9822ca56ce3}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{f6dcb77a-2fe2-4de7-9db7-c9822ca56ce3}">
+		<relationship name="parameter">
+			<destination>{d8e1aa7e-74cc-4bff-8db5-9cc032f49259}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{547e1e6c-58ce-4fd7-be59-9dc082b7c8af}</destination>
+			<destination>{ed5fc5c0-514f-4237-81e6-8865736bee86}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{547e1e6c-58ce-4fd7-be59-9dc082b7c8af}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>500</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{ed5fc5c0-514f-4237-81e6-8865736bee86}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>5000</value>
+		</property>
+	</object>
 </objects>

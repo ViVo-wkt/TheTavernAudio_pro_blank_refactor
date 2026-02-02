@@ -760,9 +760,6 @@
 		</property>
 	</object>
 	<object class="LowpassEffect" id="{ea88f2ea-4238-4148-90a1-d64863bf1763}">
-		<property name="cutoff">
-			<value>22000</value>
-		</property>
 		<relationship name="automators">
 			<destination>{dcc33ed6-47d7-40ac-9313-ba2b146a2d76}</destination>
 		</relationship>
@@ -961,6 +958,34 @@
 	<object class="Automator" id="{dcc33ed6-47d7-40ac-9313-ba2b146a2d76}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>cutoff</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{fb6b5a28-f3de-4b55-86e9-52597f1b05f7}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{fb6b5a28-f3de-4b55-86e9-52597f1b05f7}">
+		<relationship name="parameter">
+			<destination>{d8e1aa7e-74cc-4bff-8db5-9cc032f49259}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{6d3fda26-8234-4eb4-bf8b-df7d79b8fe0b}</destination>
+			<destination>{324aba1c-17e1-4005-a697-899e42871078}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{6d3fda26-8234-4eb4-bf8b-df7d79b8fe0b}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>500</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{324aba1c-17e1-4005-a697-899e42871078}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>5000</value>
 		</property>
 	</object>
 </objects>
