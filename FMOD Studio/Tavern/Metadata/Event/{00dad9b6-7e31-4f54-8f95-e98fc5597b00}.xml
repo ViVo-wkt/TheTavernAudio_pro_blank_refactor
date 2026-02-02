@@ -176,6 +176,9 @@
 	<object class="MixerBusPanner" id="{39cd4c7e-53ae-41b2-a4bf-093cbd83e2fd}" />
 	<object class="MixerBusFader" id="{f7ac68ac-7d9e-40d7-9057-43c0a55a789c}" />
 	<object class="ThreeEQEffect" id="{55320b0b-94f9-41c4-a47e-bcf036b00296}">
+		<property name="midGain">
+			<value>-2</value>
+		</property>
 		<property name="highGain">
 			<value>-16</value>
 		</property>
@@ -222,7 +225,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>5000</value>
+			<value>22000</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{8260fe09-7ca5-410b-99d0-86b71788f55c}">
@@ -230,7 +233,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>750</value>
+			<value>2000</value>
 		</property>
 	</object>
 </objects>

@@ -977,7 +977,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>750</value>
+			<value>2000</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{324aba1c-17e1-4005-a697-899e42871078}">
@@ -985,7 +985,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>5000</value>
+			<value>22000</value>
 		</property>
 	</object>
 </objects>
